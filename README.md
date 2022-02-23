@@ -1,2 +1,2 @@
-# data-structures-python
-Data Structures Study using Python
+# data-structures-cpp
+Data Structures Study using C++
