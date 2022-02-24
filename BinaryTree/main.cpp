@@ -60,9 +60,39 @@ class Tree {
         }
     }
     
+    private: void inOrder(Node *no) {
+        if (no != NULL) {
+            inOrder(no->left);
+            cout << no->data << " ";
+            inOrder(no->right);
+        }
+    }
+    
+    private: void preOrder(Node *no) {
+        if (no != NULL) {
+            cout << no->data << " ";
+            preOrder(no->left);
+            preOrder(no->right);
+        }
+    }
+    
+    private: void posOrder(Node *no) {
+        if (no != NULL) {
+            posOrder(no->left);
+            posOrder(no->right);
+            cout << no->data << " ";
+        }
+    }
+    
     public: void showResults() {
         cout << "Folhas: ";
         folhas(root);
+        cout << "\nIn Order: ";
+        inOrder(root);
+        cout << "\nPre Order: ";
+        preOrder(root);
+        cout << "\nPos Order: ";
+        posOrder(root);
     }
 };
 
