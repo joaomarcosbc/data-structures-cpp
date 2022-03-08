@@ -106,7 +106,7 @@ class Tree {
       }
     }
 
-    //functions para altura por no e depois puxndo da root
+    //functions para altura por no e depois puxando da root
 
     private: int nodeHeight(Node *no) {
      if(no == NULL || (no->left == NULL && no->right == NULL))
