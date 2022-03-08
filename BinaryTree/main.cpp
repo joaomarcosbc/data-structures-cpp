@@ -139,6 +139,20 @@ class Tree {
       }
     }
 
+    private: void nodeSubtrees(Node *no) {
+      if (no != root) {
+        cout << no->data << "-> ";
+        preOrder(no);
+        cout << "\n";
+      }
+      if (no->left != NULL) {
+        nodeSubtrees(no->left);
+      }
+      if (no->right != NULL) {
+        nodeSubtrees(no->right);
+      }
+    }
+
     public: void showResults() {
         cout << "a)" << endl;
         cout << "\nIn Order: ";
@@ -158,6 +172,9 @@ class Tree {
         cout << "\n\ne, f)" << endl;
         cout << "\nProfundidade e Nível de cada nó: " << endl;
         nodeAncestors(root, 0);
+        cout << "\n\ng)" << endl;
+        cout << "\nSubárvores: " << endl;
+        nodeSubtrees(root);
       
     }
 };
