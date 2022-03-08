@@ -129,6 +129,16 @@ class Tree {
        }
     }
 
+    private: void nodeAncestors(Node *no, int quantity) {
+      cout << no->data << "-> " << quantity << endl;
+      if (no->left != NULL) {
+        nodeAncestors(no->left, quantity + 1);
+      }
+      if (no->right != NULL) {
+        nodeAncestors(no->right, quantity + 1);
+      }
+    }
+
     public: void showResults() {
         cout << "a)" << endl;
         cout << "\nIn Order: ";
@@ -145,6 +155,10 @@ class Tree {
         cout << "\n\nd)" << endl;
         cout << "\nAltura de cada nó: " << endl;
         allNodeHeights(root);
+        cout << "\n\ne, f)" << endl;
+        cout << "\nProfundidade e Nível de cada nó: " << endl;
+        nodeAncestors(root, 0);
+      
     }
 };
 
