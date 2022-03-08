@@ -83,16 +83,68 @@ class Tree {
             cout << no->data << " ";
         }
     }
-    
+
+    private: void nodeGrades(Node *no) {
+      if (no->right == NULL && no->left == NULL) {
+        cout << no->data << "-> 0" << endl;
+      } else if (no->right != NULL && no->left != NULL) {
+        cout << no->data << "-> 2" << endl;
+        if (no->left != NULL) {
+          nodeGrades(no->left);
+        }
+        if (no->right != NULL) {
+          nodeGrades(no->right);
+        }
+      } else {
+        cout << no->data << "-> 1" << endl;
+        if (no->left != NULL) {
+          nodeGrades(no->left);
+        }
+        if (no->right != NULL) {
+          nodeGrades(no->right);
+        }
+      }
+    }
+
+    //functions para altura por no e depois puxndo da root
+
+    private: int nodeHeight(Node *no) {
+     if(no == NULL || (no->left == NULL && no->right == NULL))
+       return 0;
+     else {
+   	if (nodeHeight(no->left) > nodeHeight(no->right))
+   	   return ( 1 + nodeHeight(no->left) );
+   	else
+	   return ( 1 + nodeHeight(no->right) );
+     }
+  }
+
+    private: void allNodeHeights(Node *no) {
+      cout << no->data << "-> " << nodeHeight(no) << endl;
+       if (no->left != NULL) {
+         allNodeHeights(no->left);
+       }
+       if (no->right != NULL) {
+         allNodeHeights(no->right);
+       }
+    }
+
     public: void showResults() {
-        cout << "Folhas: ";
-        folhas(root);
+        cout << "a)" << endl;
         cout << "\nIn Order: ";
         inOrder(root);
         cout << "\nPre Order: ";
         preOrder(root);
         cout << "\nPos Order: ";
         posOrder(root);
+        cout << "\n\nb)" << endl;
+        cout << "\nFolhas: ";
+        folhas(root);
+        cout << "\n\nc)" << "\n\nGrau de cada nó: " << endl;
+        nodeGrades(root);
+        cout << "\n\nd)" << endl;
+        cout << "\nAltura de cada nó: " << endl;
+        allNodeHeights(root);
     }
 };
 
@@ -105,6 +157,7 @@ int main() {
     tree.insert(3);
     tree.insert(11);
     tree.insert(14);
+    tree.insert(1);
     
     tree.showResults();
 }
